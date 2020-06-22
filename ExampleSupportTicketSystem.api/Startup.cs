@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using ExampleSupportTicketSystem.Api.Models;
 using ExampleSupportTicketSystem.Application.Concrete;
 using ExampleSupportTicketSystem.Application.Interfaces;
+using ExampleSupportTicketSystem.Application.Library;
 using ExampleSupportTicketSystem.Domain.Interface;
 using ExampleSupportTicketSystem.Domain.Models;
 using ExampleSupportTicketSystem.Domain.Repository;
@@ -35,10 +36,11 @@ namespace ExampleSupportTicketSystem.Api
             services.AddScoped<ISupportRepository, SupportRepository>();
             services.AddScoped<ITicketStatus, TicketStatus>();
             services.AddScoped<ITicket, Ticket>();
+            services.AddScoped<ITicketResponseBuilder, TickerResponseBuilder>();
+
+   
 
 
-
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

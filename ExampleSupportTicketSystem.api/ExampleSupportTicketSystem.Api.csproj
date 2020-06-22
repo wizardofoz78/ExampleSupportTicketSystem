@@ -8,4 +8,8 @@
     <ProjectReference Include="..\ExampleSupportTicketSystem.Application\ExampleSupportTicketSystem.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Builders\" />
+  </ItemGroup>
+
 </Project>

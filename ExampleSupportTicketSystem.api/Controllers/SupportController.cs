@@ -41,22 +41,10 @@ namespace ExampleSupportTicketSystem.Api.Controllers
             }
             catch (Exception e)
             {
-                // Add Logging Here.
-                // Improve the response.
-                // Refactor.
-                ICreateTicketResponseModel ticketResponseTransform = (ICreateTicketResponseModel)serviceProvider.GetService(typeof(ICreateTicketResponseModel));
-                ticketResponseTransform.TicketId = -1;
 
-                ITicketStatus ticketStatus = (ITicketStatus)serviceProvider.GetService(typeof(ITicketStatus));
+                var ticketStatus = (ITicketResponseBuilder)serviceProvider.GetService(typeof(ITicketResponseBuilder));
 
-                ticketStatus.Status_Code = -1;
-                ticketStatus.Status_Name = "ERROR";
-                ticketStatus.Status_Description = e.Message;
-                ticketStatus.TicketStatusId = -1;
-
-                ticketResponseTransform.Status = ticketStatus;
-
-                return BadRequest(ticketResponseTransform);
+                return BadRequest(ticketStatus.Build(serviceProvider, null, -1, e));
             }
 
             return Ok(response);
