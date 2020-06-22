@@ -11,11 +11,7 @@ namespace ExampleSupportTicketSystem.Tests.ApplicationTests
 {
     public class CreateTicketTest
     {
-        private int FuncData(int x, int y)
-        {
-            return x + y;
-        }
-
+        
         [Fact]
         public void Create_Support_Ticket_Test_Success()
         {
