@@ -1,4 +1,4 @@
-# ExampleSupportTicketSystem
+# Example Support Ticket System
 This project gives an example of; 
 
 1. Design Artefacts
@@ -11,7 +11,7 @@ This project gives an example of;
 8. Request Routing
 
 
-Improvements.
+# Improvements.
 1. Consider decoupling the logging to make it non blocking, i.e send the log to a message queue for later processing into a central log system such as Seq.
 
 2. Code needs refactoring.
