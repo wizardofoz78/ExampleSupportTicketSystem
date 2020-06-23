@@ -2,11 +2,13 @@
 This project gives an example of; 
 
 1. Design Artefacts
-2. Solution structure
-3. Dependency Injection.
+2. Solution / Project structure
+3. Dependency Injection using Microsoft DI.
 4. Model Binding
 5. Domain Model / Repository design.
 6. Unit Tests (using the Moq framework)
+7. .Net Core 3.1
+8. Request Routing
 
 
 Improvements.
@@ -24,5 +26,15 @@ Improvements.
 5. Improve the branching structure of this project and use either Feature branch or Git Flow.
 
 6. Add Persistent storage support (i.e database, message queue)
+
+7. Add HTTPS Support
+
+8. Add Cors Support
+
+9. Add OAUTH2 / Authorisation Support.
+
+10. Add Audit , Application, Error and Debug Logging.
+
+
 
 
