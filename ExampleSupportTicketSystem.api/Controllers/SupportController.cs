@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ExampleSupportTicketSystem.Api.Filters;
 using ExampleSupportTicketSystem.Api.Models;
 using ExampleSupportTicketSystem.Application.Interfaces;
-using ExampleSupportTicketSystem.Domain.Interface;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExampleSupportTicketSystem.Api.Controllers
@@ -23,19 +19,17 @@ namespace ExampleSupportTicketSystem.Api.Controllers
         }
 
         [HttpPost]
-        //[Authorize]// Enable for OAUTH2 Implementation!
+        [Authorize]
+        [CustomAuthorizeScope(AllowedScope = "DEV_SCOPE_READER")]
         [Route("api/[controller]/ticket/create")]
         public IActionResult CreateTicket([FromBody] CreateTicketRequestModel createModel)
         {
-
             ICreateTicketResponseModel response = null;
   
             try
             {
                 if (!ModelState.IsValid)
-                {
                     throw new Exception("Model is invalid");
-                }
 
                 response = createTicket.Create(createModel);
             }
@@ -48,7 +42,6 @@ namespace ExampleSupportTicketSystem.Api.Controllers
             }
 
             return Ok(response);
-
         }
 
         [HttpGet]
