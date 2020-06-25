@@ -12,6 +12,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using System.IO;
+using System;
 
 namespace ExampleSupportTicketSystem.Api
 {
@@ -22,6 +26,26 @@ namespace ExampleSupportTicketSystem.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            // Add Open Api
+            var XmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, XmlFile);
+
+            services.AddSwaggerGen(prop =>
+            {
+                prop.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "Support Ticket Api",
+                    Description = "Example Support Ticket Api",
+                });
+
+                // Set the comments path for the Swagger JSON and UI.
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                prop.IncludeXmlComments(xmlPath);
+            });
+
 
 
             // Add Dependency Injection
@@ -97,6 +121,17 @@ namespace ExampleSupportTicketSystem.Api
             app.UseAuthorization();
 
             // TODO: Add Logging (SeriLog?)
+            // Added to Program.CS = SeriLog
+
+
+            // Add Open Api
+            app.UseSwagger();
+
+            app.UseSwaggerUI(x => {
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Example Support Ticket Api");
+                x.RoutePrefix = string.Empty;
+            }) ;
+
 
             app.UseEndpoints(endpoints =>
             {

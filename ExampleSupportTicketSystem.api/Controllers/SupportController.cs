@@ -18,6 +18,11 @@ namespace ExampleSupportTicketSystem.Api.Controllers
             serviceProvider = _serviceProvider;
         }
 
+        /// <summary>
+        /// Creates a new Support Ticket
+        /// </summary>
+        /// <param name="createModel">The Input Model to create a new Ticket</param>
+        /// <returns></returns>
         [HttpPost]
         [Authorize]
         [CustomAuthorizeScope(AllowedScope = "DEV_SCOPE_READER")]
@@ -44,6 +49,10 @@ namespace ExampleSupportTicketSystem.Api.Controllers
             return CreatedAtAction("CreateTicket", response);
         }
 
+        /// <summary>
+        /// Returns all Support tickets
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Authorize]
         [Route("api/[controller]/ticket/get")]
@@ -53,6 +62,11 @@ namespace ExampleSupportTicketSystem.Api.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Returns a Support ticket by its Id.
+        /// </summary>
+        /// <param name="id">The Ticket to be returned, its identifier</param>
+        /// <returns></returns>
         [HttpGet]
         [Authorize]
         [Route("api/[controller]/ticket/get/{id}")]
@@ -62,7 +76,10 @@ namespace ExampleSupportTicketSystem.Api.Controllers
             return Ok();
         }
 
-
+        /// <summary>
+        /// Updates a Support ticket
+        /// </summary>
+        /// <returns></returns>
         [HttpPut]
         [Authorize]
         [Route("api/[controller]/ticket/update")]

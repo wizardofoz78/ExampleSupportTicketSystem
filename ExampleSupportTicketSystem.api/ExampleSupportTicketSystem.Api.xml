@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExampleSupportTicketSystem.Api</name>
+    </assembly>
+    <members>
+        <member name="M:ExampleSupportTicketSystem.Api.Controllers.SupportController.CreateTicket(ExampleSupportTicketSystem.Api.Models.CreateTicketRequestModel)">
+            <summary>
+            Creates a new Support Ticket
+            </summary>
+            <param name="createModel">The Input Model to create a new Ticket</param>
+            <returns></returns>
+        </member>
+        <member name="M:ExampleSupportTicketSystem.Api.Controllers.SupportController.GetAllTicket">
+            <summary>
+            Returns all Support tickets
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ExampleSupportTicketSystem.Api.Controllers.SupportController.GetTicketById(System.Int32)">
+            <summary>
+            Returns a Support ticket by its Id.
+            </summary>
+            <param name="id">The Ticket to be returned, its identifier</param>
+            <returns></returns>
+        </member>
+        <member name="M:ExampleSupportTicketSystem.Api.Controllers.SupportController.UpdateTicket">
+            <summary>
+            Updates a Support ticket
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
