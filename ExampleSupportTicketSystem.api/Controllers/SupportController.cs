@@ -40,14 +40,23 @@ namespace ExampleSupportTicketSystem.Api.Controllers
 
                 return BadRequest(ticketStatus.Build(serviceProvider, null, -1, e));
             }
-
-            return Ok(response);
+;
+            return CreatedAtAction("CreateTicket", response);
         }
 
         [HttpGet]
         [Authorize]
         [Route("api/[controller]/ticket/get")]
         public IActionResult GetAllTicket()
+        {
+            // TODO:
+            return Ok();
+        }
+
+        [HttpGet]
+        [Authorize]
+        [Route("api/[controller]/ticket/get/{id}")]
+        public IActionResult GetTicketById(int id)
         {
             // TODO:
             return Ok();
